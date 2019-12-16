@@ -3,6 +3,7 @@ import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import * as rtl from '@testing-library/react';
 import Dash from './Dashboard';
+import { exportAllDeclaration } from '@babel/types';
 
 // react testing library requires a "cleanup" operation
 // after each test
@@ -19,4 +20,5 @@ beforeEach(() => {
 
 it('renders without crashing', () => {
   wrapper.debug();
+  expect(wrapper.container).toMatchSnapshot();
 });
