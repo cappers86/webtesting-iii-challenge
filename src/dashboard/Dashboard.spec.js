@@ -12,7 +12,13 @@ afterEach(rtl.cleanup);
 
 // STEP 3 take care of repetitive operations inside
 // a beforeEach function
+
 let wrapper;
+let Unlocked = () =>{
+    return wrapper.queryByText('Unlocked');
+}
+
+
 beforeEach(() => {
   // we want the "wrapper" recreated at every test
   wrapper = rtl.render(<Dash />)
@@ -21,4 +27,9 @@ beforeEach(() => {
 it('renders without crashing', () => {
   wrapper.debug();
   expect(wrapper.container).toMatchSnapshot();
+});
+
+it ('renders a "Unlocked" text node', () => {
+   
+    expect(wrapper.queryByText('Unlocked')).toBeVisible();
 });
